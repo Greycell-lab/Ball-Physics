@@ -23,6 +23,7 @@ namespace Ball_Physics
     {
         double physicSpeed = 0;
         bool ballDown = true;
+        int ballHits = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,21 +35,23 @@ namespace Ball_Physics
         }
         void gameEngine(object sender, EventArgs e)
         {
+            hits.Content = "Hits: " + ballHits;
             Rect bottomHitbox = new Rect(Canvas.GetLeft(bottom), Canvas.GetTop(bottom), bottom.Width, bottom.Height);
             Rect ballHitbox = new Rect(Canvas.GetLeft(ball), Canvas.GetTop(ball), ball.Width, ball.Height);
             if(ballDown)
             {
                 if(physicSpeed < 0) physicSpeed = 0;
-                physicSpeed += 0.25;
+                physicSpeed += 0.40;
                 Canvas.SetTop(ball, Canvas.GetTop(ball) + physicSpeed);
                 if(ballHitbox.IntersectsWith(bottomHitbox))
                 {
+                    ballHits++;
                     ballDown = false;
                 }
             }
             if(!ballDown)
             {
-                physicSpeed -= 0.25;
+                physicSpeed -= 0.40;
                 Canvas.SetTop(ball, Canvas.GetTop(ball) - physicSpeed);
                 if (physicSpeed <= 0) ballDown = true;
                 

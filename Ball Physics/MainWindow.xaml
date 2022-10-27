@@ -8,7 +8,8 @@
         Title="MainWindow" Height="500" Width="200">
     <Canvas Name="myCanvas" Background="LightBlue" Focusable="True">
         <Rectangle Name="ball" Fill="Black" Height="100" Canvas.Left="53" Stroke="Black" Canvas.Top="102" Width="100" RadiusX="49.5" RadiusY="49.5"/>
-        <Rectangle Name="bottom" Fill="Beige" Height="47" Canvas.Left="-18" Stroke="Black" Canvas.Top="400" Width="242" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle Name="bottom" Fill="Beige" Height="47" Canvas.Left="-21" Stroke="Black" Canvas.Top="400" Width="242" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Name="hits" Content="Hits:l" Canvas.Left="62" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24"/>
 
     </Canvas>
 </Window>
