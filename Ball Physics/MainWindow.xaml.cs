@@ -22,7 +22,7 @@ namespace Ball_Physics
     public partial class MainWindow : Window
     {
         double physicSpeed = 0;
-        bool ballDown = true;
+        bool ballDown = true, up, down;
         int ballHits = 0;
         public MainWindow()
         {
@@ -45,6 +45,7 @@ namespace Ball_Physics
                 Canvas.SetTop(ball, Canvas.GetTop(ball) + physicSpeed);
                 if(ballHitbox.IntersectsWith(bottomHitbox))
                 {
+                    Canvas.SetTop(ball, Canvas.GetTop(bottom) - ball.Height - 10);
                     ballHits++;
                     ballDown = false;
                 }
@@ -54,9 +55,27 @@ namespace Ball_Physics
                 physicSpeed -= 0.40;
                 Canvas.SetTop(ball, Canvas.GetTop(ball) - physicSpeed);
                 if (physicSpeed <= 0) ballDown = true;
-                
-                
             }
+            if(up)
+            {
+                Canvas.SetTop(bottom, Canvas.GetTop(bottom) - 10);
+            }
+            if(down)
+            {
+                Canvas.SetTop(bottom, Canvas.GetTop(bottom) + 10);
+            }
+        }
+
+        private void onKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Up) up = false;
+            else if (e.Key == Key.Down) down = false;  
+        }
+
+        private void onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Up) up = true;
+            else if (e.Key == Key.Down) down = true;
         }
     }
 }
